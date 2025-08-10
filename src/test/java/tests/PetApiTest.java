@@ -1,11 +1,10 @@
 package tests;
 
+import dto.Pet;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 import specs.PetStoreSpecs;
 
-import java.util.HashMap;
-import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
@@ -20,7 +19,7 @@ public class PetApiTest {
         given()
                 .spec(PetStoreSpecs.getRequestSpec())
                 .when()
-                .get("v2/pet/15")
+                .get("1")
                 .then()
                 .spec(PetStoreSpecs.responseSpecSuccess());
     }
@@ -30,7 +29,7 @@ public class PetApiTest {
         given()
                 .spec(PetStoreSpecs.getRequestSpec())
                 .when()
-                .get("v2/pet/999999")
+                .get("/999999")
                 .then()
                 .spec(PetStoreSpecs.responseSpecNotFound());
     }
@@ -41,7 +40,7 @@ public class PetApiTest {
                 .spec(PetStoreSpecs.getRequestSpec())
                 .body("{\"id\": 626, \"name\": \"StitchAuto\" } ")
                 .when()
-                .post("v2/pet")
+                .post("")
                 .then()
                 .spec(PetStoreSpecs.responseSpecSuccess())
                 .body("name", equalTo("StitchAuto"));
@@ -50,15 +49,17 @@ public class PetApiTest {
 
     @Test //франкенштейн с выводом в консоль и добавлением полей через массив
     public void updPet() {
-        Map<String, Object> pet = new HashMap<>();
-        pet.put("id", 626);
-        pet.put("name", "updStitchAuto");
+
+        Pet pet = Pet.builder()
+                .id(626)
+                .name("updStitchAuto")
+                .build();
 
         Response response = given()
                 .spec(PetStoreSpecs.getRequestSpec())
                 .body(pet)
                 .when()
-                .put("v2/pet");
+                .put("");
 
                 response.then()
                 .spec(PetStoreSpecs.responseSpecSuccess())
@@ -75,7 +76,7 @@ public class PetApiTest {
                 .spec(PetStoreSpecs.getRequestSpec())
                 .body("{\"id\": 626, \"api_key\": \"special-key\" } ")
                 .when()
-                .post("v2/pet")
+                .post("")
                 .then()
                 .spec(PetStoreSpecs.responseSpecSuccess());
 

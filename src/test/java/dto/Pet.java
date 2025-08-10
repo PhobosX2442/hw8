@@ -8,8 +8,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Pet {
-    private Long id;
+    private int id;
     private Category category;
     private String name;
     private List<String> photoUrls;
