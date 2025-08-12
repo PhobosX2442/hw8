@@ -8,7 +8,7 @@ import io.restassured.specification.ResponseSpecification;
 public class PetStoreSpecs {
 
 
-    public static RequestSpecification getRequestSpec() {
+    public static RequestSpecification requestSpec() {
 
         return new RequestSpecBuilder()
                 .setBaseUri("https://petstore.swagger.io/v2/pet")
@@ -16,14 +16,14 @@ public class PetStoreSpecs {
                 .build();
     }
 
-    public static ResponseSpecification responseSpecSuccess() {
+    public static ResponseSpecification successResponse() {
         return new ResponseSpecBuilder()
                 .expectStatusCode(200)
                 .expectContentType("application/json")
                 .build();
     }
 
-    public static ResponseSpecification responseSpecNotFound() {
+    public static ResponseSpecification notFoundResponse() {
         return new ResponseSpecBuilder()
                 .expectStatusCode(404)
                 .expectContentType("application/json")
