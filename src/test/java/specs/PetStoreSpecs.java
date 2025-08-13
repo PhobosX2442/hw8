@@ -1,5 +1,6 @@
 package specs;
 
+import dto.Pet;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
@@ -31,3 +32,4 @@ public class PetStoreSpecs {
     }
 
 }
+

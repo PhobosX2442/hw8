@@ -5,13 +5,14 @@ import specs.PetStoreSpecs;
 
 import static io.restassured.RestAssured.given;
 
-public class GetPet {
+public class GetPetTest {
+
     @Test
     public void testGetPet() {
         given()
                 .spec(PetStoreSpecs.requestSpec())
                 .when()
-                .get("1")
+                .get("/1")
                 .then()
                 .spec(PetStoreSpecs.successResponse());
     }

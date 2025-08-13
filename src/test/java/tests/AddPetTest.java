@@ -2,27 +2,26 @@ package tests;
 
 import dto.Pet;
 import org.junit.jupiter.api.Test;
+import specs.PetFactory;
 import specs.PetStoreSpecs;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class UpdatePet {
+public class AddPetTest {
     @Test
-    public void updatePet() {
+    public void addPet() {
 
-        Pet pet = Pet.builder()
-                .id(626)
-                .name("updStitchAuto")
-                .build();
+        Pet.PetBuilder builder = PetFactory.getPet();
+        Pet pet = builder.build();
 
         given()
                 .spec(PetStoreSpecs.requestSpec())
                 .body(pet)
                 .when()
-                .put("")
+                .post("")
                 .then()
                 .spec(PetStoreSpecs.successResponse())
-                .body("name", equalTo("updStitchAuto"));
+                .body("name", equalTo("StitchAuto"));
     }
 }

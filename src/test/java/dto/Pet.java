@@ -16,4 +16,5 @@ public class Pet {
     private List<String> photoUrls;
     private List<Tag> tags;
     private String status;
+    private String api_key;
 }
