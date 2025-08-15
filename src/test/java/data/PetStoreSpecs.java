@@ -1,6 +1,5 @@
-package specs;
+package data;
 
-import dto.Pet;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;

@@ -1,7 +1,7 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-import specs.PetStoreSpecs;
+import data.PetStoreSpecs;
 
 import static io.restassured.RestAssured.given;
 
@@ -22,7 +22,7 @@ public class GetPetTest {
         given()
                 .spec(PetStoreSpecs.requestSpec())
                 .when()
-                .get("/999999")
+                .get("/54645654654343543543543543")
                 .then()
                 .spec(PetStoreSpecs.notFoundResponse());
     }

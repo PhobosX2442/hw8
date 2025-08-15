@@ -2,15 +2,14 @@ package tests;
 
 import dto.Pet;
 import org.junit.jupiter.api.Test;
-import specs.PetFactory;
-import specs.PetStoreSpecs;
+import data.PetFactory;
+import data.PetStoreSpecs;
 
 import static io.restassured.RestAssured.given;
 
 public class DeletePetTest {
 
-    Pet.PetBuilder builder = PetFactory.getPet();
-    Pet pet = builder.build();
+    Pet pet = PetFactory.getPet();
 
 
     @Test
