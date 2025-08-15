@@ -13,12 +13,23 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'io.rest-assured:rest-assured:5.4.0'
-    compileOnly("org.projectlombok:lombok:1.18.38")
-    annotationProcessor("org.projectlombok:lombok:1.18.38")
+    testCompileOnly("org.projectlombok:lombok:1.18.38")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.38")
     implementation 'org.assertj:assertj-core:3.27.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+
 
 }
 
 test {
     useJUnitPlatform()
+
+    systemProperties += [
+            'junit.jupiter.execution.parallel.enabled'                 : true,
+            'junit.jupiter.execution.parallel.mode.default'            : 'concurrent',
+            'junit.jupiter.execution.parallel.mode.classes.default'    : 'concurrent',
+            'junit.jupiter.execution.parallel.config.strategy'         : 'fixed',
+            'junit.jupiter.execution.parallel.config.fixed.parallelism': '5'
+    ]
+
 }
